@@ -1,0 +1,21 @@
+{
+  "task": "Template-Yaw-Bot-LIRPG-PPO-Direct-v0",
+  "checkpoint": "ANONYMIZED_SELECTED_CHECKPOINT/model_1499.pt",
+  "checkpoint_iteration": 1499,
+  "evaluation_seed": 3301,
+  "num_envs": 128,
+  "steps": 7200,
+  "completed_episodes": 540,
+  "mean_episode_length": 1382.5185185185185,
+  "metrics": {
+    "Diagnostics/forward_cmd_success_rate": 0.26767172102919884,
+    "Diagnostics/lin_cmd_success_rate": 0.0637819871872974,
+    "Diagnostics/planar_position_error": 4.112178036676487,
+    "Diagnostics/stop_cmd_success_rate": 0.1649156832198302,
+    "Diagnostics/yaw_cmd_signed_success_rate": 0.14622611068628935,
+    "Evaluation/action_saturation_rate": 0.2834188828824295,
+    "Evaluation/command_success": 0.05823025173611111,
+    "Evaluation/fixed_outer_reward": 1.4868579747610622,
+    "Evaluation/termination_rate": 0.00046223958333333333
+  }
+}

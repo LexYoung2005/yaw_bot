@@ -1,0 +1,172 @@
+{
+  "fixed_safety_reward": {
+    "expression": "(1 - terminated) - 15 * terminated",
+    "composer_controlled": false
+  },
+  "fixed_task_objective": {
+    "expression": "0.5 * (linear_tracking_score + yaw_tracking_score) + (1 - terminated) - 5 * terminated - 0.01 * mean(action^2)",
+    "composer_controlled": false
+  },
+  "normalization": {
+    "group_rms_decay": 0.999,
+    "subtract_mean": false,
+    "current_transition_uses_pre_update_scale": true,
+    "expression": "normalized_group = sum(group_atomic_terms) / sqrt(ema_mean_square + epsilon)"
+  },
+  "atomic_terms": [
+    {
+      "index": 0,
+      "name": "angle_penalty",
+      "group": "stability",
+      "scale": -0.2,
+      "expression": "scale * sum(projected_gravity_xy^2)"
+    },
+    {
+      "index": 1,
+      "name": "roll_pitch_rate_penalty",
+      "group": "stability",
+      "scale": -0.03,
+      "expression": "scale * sum(root_angular_velocity_xy^2)"
+    },
+    {
+      "index": 2,
+      "name": "projected_gravity",
+      "group": "stability",
+      "scale": 0.1,
+      "expression": "scale * exp(-sum(projected_gravity_xy^2) / 0.05)"
+    },
+    {
+      "index": 3,
+      "name": "yaw_rate_penalty",
+      "group": "yaw",
+      "scale": -0.05,
+      "expression": "scale * indicator(abs(yaw_command) <= 0.05) * root_yaw_rate^2"
+    },
+    {
+      "index": 4,
+      "name": "action_rate_penalty",
+      "group": "regularization",
+      "scale": -0.0001,
+      "expression": "scale * exp(-(abs(linear_command) + 0.5 * abs(yaw_command)) / 0.25) * sum((leg_action - previous_leg_action)^2)"
+    },
+    {
+      "index": 5,
+      "name": "action_magnitude_penalty",
+      "group": "regularization",
+      "scale": -0.02,
+      "expression": "scale * sum(action^2)"
+    },
+    {
+      "index": 6,
+      "name": "stillness_penalty",
+      "group": "regularization",
+      "scale": -2.0,
+      "expression": "scale * abs(body_forward_velocity)"
+    },
+    {
+      "index": 7,
+      "name": "servo_motion_penalty",
+      "group": "regularization",
+      "scale": -0.02,
+      "expression": "scale * sum(servo_joint_velocity^2)"
+    },
+    {
+      "index": 8,
+      "name": "vertical_velocity_penalty",
+      "group": "stability",
+      "scale": -1.0,
+      "expression": "scale * body_vertical_velocity^2"
+    },
+    {
+      "index": 9,
+      "name": "wheel_contact",
+      "group": "contact_slip",
+      "scale": 1.0,
+      "expression": "scale * stable_stand * wheel_contact_count / 2"
+    },
+    {
+      "index": 10,
+      "name": "wheel_air_penalty",
+      "group": "contact_slip",
+      "scale": -2.5,
+      "expression": "scale * indicator(contact_armed and any_wheel_airborne)"
+    },
+    {
+      "index": 11,
+      "name": "wheel_yaw_tracking",
+      "group": "yaw",
+      "scale": 2.0,
+      "expression": "scale * tanh(2 * yaw_command * wheel_yaw_proxy) * upright_motion_weight"
+    },
+    {
+      "index": 12,
+      "name": "wheel_linear_tracking",
+      "group": "linear",
+      "scale": 4.0,
+      "expression": "scale * tanh(3 * linear_command * mean_semantic_wheel_velocity) * upright_motion_weight"
+    },
+    {
+      "index": 13,
+      "name": "body_linear_progress",
+      "group": "linear",
+      "scale": 8.0,
+      "expression": "scale * moving_command * straight_weight * clamp(body_forward_velocity, 0, 0.35)"
+    },
+    {
+      "index": 14,
+      "name": "wrong_direction_penalty",
+      "group": "linear",
+      "scale": -6.0,
+      "expression": "scale * moving_command * abs(clamp(body_forward_velocity, max=0))"
+    },
+    {
+      "index": 15,
+      "name": "wheel_linear_progress",
+      "group": "linear",
+      "scale": 3.0,
+      "expression": "scale * active_linear_command * straight_weight * clamp(command_aligned_wheel_speed, 0, 0.25)"
+    },
+    {
+      "index": 16,
+      "name": "command_direction",
+      "group": "linear",
+      "scale": 3.0,
+      "expression": "scale * indicator(linear_command * body_forward_velocity > 0)"
+    },
+    {
+      "index": 17,
+      "name": "yaw_direction",
+      "group": "yaw",
+      "scale": 1.0,
+      "expression": "scale * indicator(active_yaw_command and yaw_command * root_yaw_rate > 0)"
+    },
+    {
+      "index": 18,
+      "name": "body_yaw_tracking",
+      "group": "yaw",
+      "scale": 6.0,
+      "expression": "scale * (exp(-(root_yaw_rate - yaw_command)^2 / 0.3) - exp(-yaw_command^2 / 0.3)) * upright_motion_weight"
+    },
+    {
+      "index": 19,
+      "name": "stop_motion_penalty",
+      "group": "regularization",
+      "scale": -2.0,
+      "expression": "scale * stop_command * (abs(body_forward_velocity) + 0.25 * abs(root_yaw_rate))"
+    },
+    {
+      "index": 20,
+      "name": "body_linear_tracking",
+      "group": "linear",
+      "scale": 8.0,
+      "expression": "scale * (exp(-(body_forward_velocity - linear_command)^2 / 0.15) - exp(-linear_command^2 / 0.15)) * upright_motion_weight"
+    },
+    {
+      "index": 21,
+      "name": "planar_position_penalty",
+      "group": "linear",
+      "scale": -2.0,
+      "expression": "scale * planar_position_error"
+    }
+  ]
+}

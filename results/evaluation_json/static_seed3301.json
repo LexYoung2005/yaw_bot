@@ -1,0 +1,21 @@
+{
+  "task": "Template-Yaw-Bot-Static-Reward-PPO-Direct-v0",
+  "checkpoint": "ANONYMIZED_SELECTED_CHECKPOINT/model_1350.pt",
+  "checkpoint_iteration": 1350,
+  "evaluation_seed": 3301,
+  "num_envs": 128,
+  "steps": 7200,
+  "completed_episodes": 320,
+  "mean_episode_length": 2576.459375,
+  "metrics": {
+    "Diagnostics/forward_cmd_success_rate": 0.2916726081450987,
+    "Diagnostics/lin_cmd_success_rate": 0.06458657968090847,
+    "Diagnostics/planar_position_error": 4.479203840079976,
+    "Diagnostics/stop_cmd_success_rate": 0.8269765891952233,
+    "Diagnostics/yaw_cmd_signed_success_rate": 0.3963976258856969,
+    "Evaluation/action_saturation_rate": 0.11330747514652709,
+    "Evaluation/command_success": 0.16538411458333332,
+    "Evaluation/fixed_outer_reward": 1.5753991589115726,
+    "Evaluation/termination_rate": 0.00017144097222222221
+  }
+}

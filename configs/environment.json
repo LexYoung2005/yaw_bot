@@ -1,0 +1,27 @@
+{
+  "hardware": {
+    "cpu": "AMD Ryzen 9 9950X",
+    "memory_gb": 64,
+    "gpus": {
+      "model": "NVIDIA GeForce RTX 5080",
+      "count": 2,
+      "memory_gb_each": 16
+    }
+  },
+  "operating_system": "Ubuntu 22.04",
+  "software": {
+    "python": "3.11",
+    "isaac_sim": "5.1",
+    "isaac_lab_distribution": "0.53.1",
+    "rsl_rl_lib": "3.1.2",
+    "pytorch": "2.7.0+cu128",
+    "gymnasium": "1.2.1",
+    "numpy": "1.26.0",
+    "tensorboard": "2.20.0",
+    "matplotlib": "3.10.3"
+  },
+  "notes": [
+    "Isaac Lab is supplied by the Isaac Lab installation rather than vendored here.",
+    "PPO-LIRPG intentionally uses its source optimizer schedule; the other methods share the common PPO configuration."
+  ]
+}

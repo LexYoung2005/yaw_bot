@@ -1,0 +1,21 @@
+{
+  "task": "Template-Yaw-Bot-ReLara-PPO-Direct-v0",
+  "checkpoint": "ANONYMIZED_SELECTED_CHECKPOINT/model_1300.pt",
+  "checkpoint_iteration": 1300,
+  "evaluation_seed": 7907,
+  "num_envs": 128,
+  "steps": 7200,
+  "completed_episodes": 802,
+  "mean_episode_length": 994.2980049875312,
+  "metrics": {
+    "Diagnostics/forward_cmd_success_rate": 0.13954054688595027,
+    "Diagnostics/lin_cmd_success_rate": 0.06223992059201312,
+    "Diagnostics/planar_position_error": 4.016631288398316,
+    "Diagnostics/stop_cmd_success_rate": 0.5253828554114119,
+    "Diagnostics/yaw_cmd_signed_success_rate": 0.12162924936830273,
+    "Evaluation/action_saturation_rate": 0.3438802180822111,
+    "Evaluation/command_success": 0.11288302951388889,
+    "Evaluation/fixed_outer_reward": 1.4895250502228736,
+    "Evaluation/termination_rate": 0.0007074652777777778
+  }
+}

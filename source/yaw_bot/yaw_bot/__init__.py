@@ -3,12 +3,7 @@
 #
 # SPDX-License-Identifier: BSD-3-Clause
 
-"""
-Python module serving as a project/extension template.
-"""
+"""YAW Isaac Lab task package."""
 
 # Register Gym environments.
 from .tasks import *
-
-# Register UI extensions.
-from .ui_extension_example import *
