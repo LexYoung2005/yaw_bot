@@ -1,0 +1,21 @@
+{
+  "task": "Template-Yaw-Bot-Uniform-Reward-PPO-Direct-v0",
+  "checkpoint": "ANONYMIZED_SELECTED_CHECKPOINT/model_1400.pt",
+  "checkpoint_iteration": 1400,
+  "evaluation_seed": 211,
+  "num_envs": 128,
+  "steps": 7200,
+  "completed_episodes": 309,
+  "mean_episode_length": 2674.453074433657,
+  "metrics": {
+    "Diagnostics/forward_cmd_success_rate": 0.09733187760045338,
+    "Diagnostics/lin_cmd_success_rate": 0.05684432542430133,
+    "Diagnostics/planar_position_error": 4.948968769292502,
+    "Diagnostics/stop_cmd_success_rate": 0.8705553299064438,
+    "Diagnostics/yaw_cmd_signed_success_rate": 0.2837476099657619,
+    "Evaluation/action_saturation_rate": 0.08074436008102363,
+    "Evaluation/command_success": 0.1836349826388889,
+    "Evaluation/fixed_outer_reward": 1.572955633683337,
+    "Evaluation/termination_rate": 0.00015516493055555555
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "timing": {
+    "physics_hz": 120,
+    "action_decimation": 2,
+    "control_hz": 60,
+    "rollout_control_steps": 24
+  },
+  "actions": {
+    "dimension": 6,
+    "leg_position_actions": 4,
+    "wheel_velocity_actions": 2,
+    "normalized_bounds": [-1.0, 1.0],
+    "branch_hip_scale_rad": 0.35,
+    "mapped_hip_scale_rad": 0.35,
+    "wheel_velocity_scale": 10.0
+  },
+  "policy_observation": {
+    "dimension": 75,
+    "state_dimension": 25,
+    "future_pose_dimension": 50,
+    "future_pose_steps": 5,
+    "future_state_dimension": 10
+  },
+  "composer_predictive_input": {
+    "history_steps": 4,
+    "state_dimension": 28,
+    "action_dimension": 6,
+    "depth_latent_dimension": 32,
+    "state_latent_dimension": 64,
+    "action_latent_dimension": 32,
+    "fused_dimension": 128,
+    "future_prediction_steps": 12,
+    "event_heads": 3,
+    "events_per_head": 4
+  },
+  "commands": {
+    "linear_velocity_range": [-1.0, 1.0],
+    "yaw_rate_range": [-1.0, 1.0],
+    "hold_time_seconds": [5.0, 10.0],
+    "minimum_nonzero_linear_magnitude": 0.15,
+    "minimum_nonzero_yaw_magnitude": 0.35,
+    "yaw_command_probability": 0.5,
+    "stop_command_probability": 0.15
+  },
+  "depth_camera": {
+    "height": 54,
+    "width": 96,
+    "maximum_distance_m": 2.0,
+    "body_frame_position_m": [0.0, 0.035, 0.025],
+    "downward_pitch_degrees_approx": 15.0
+  },
+  "terrain_material": {
+    "static_friction": 1.4,
+    "dynamic_friction": 1.2,
+    "combine_mode": "multiply"
+  },
+  "robot_material_startup_randomization": {
+    "static_friction_range": [0.8, 1.6],
+    "dynamic_friction_range": [0.7, 1.3]
+  },
+  "parallel_leg_kinematics": {
+    "x_expression": "60 * (cos(beta) - cos(alpha))",
+    "y_expression": "60 * (sin(beta) + sin(alpha)) + 45",
+    "chord_expression": "sqrt(x^2 + y^2)",
+    "knee_expression": "-pi + alpha + atan2(y, x) + acos(clip(-chord / 200, -1, 1))",
+    "nominal_alpha_degrees": 50.0,
+    "nominal_beta_degrees": 40.0,
+    "nominal_knee_degrees": 87.176,
+    "right_knee_axis_is_mirrored": true
+  }
+}

@@ -7,11 +7,11 @@ version = "0.1.0"
 category = "isaaclab"
 readme  = "README.md"
 
-title = "Yaw Bot"
-author = "Yaw Bot Project"
-maintainer = "Yaw Bot Project"
-description="Isaac Lab project for training and evaluating a two-wheel balancing robot."
-repository = "https://github.com/your-org/yaw_bot"
+title = "YAW Code and Data Appendix"
+author = "YAW Authors"
+maintainer = "YAW Authors"
+description="Isaac Lab implementation of predictive reward composition for wheel-legged locomotion."
+repository = "https://github.com/LexYoung2005/yaw_bot"
 keywords = ["isaaclab", "reinforcement-learning", "balancing-robot", "yaw-bot"]
 
 [dependencies]

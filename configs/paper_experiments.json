@@ -1,0 +1,75 @@
+{
+  "paper_title": "YAW: Predictive Reward Composition via Task-Advantage Alignment for Wheel-Legged Locomotion",
+  "training": {
+    "num_envs": 512,
+    "rollout_steps": 24,
+    "iterations": 1500,
+    "physics_hz": 120,
+    "control_hz": 60,
+    "gamma": 0.995,
+    "gae_lambda": 0.95,
+    "ppo_clip": 0.1,
+    "ppo_epochs": 3,
+    "ppo_minibatches": 4,
+    "initial_learning_rate": 0.001,
+    "target_rollout_kl": 0.03,
+    "maximum_rollout_kl": 0.06
+  },
+  "yaw": {
+    "label": "YAW",
+    "task": "Template-Yaw-Bot-Predictive-Gated-Direct-v0",
+    "seeds": [17, 389, 2027]
+  },
+  "outer": {
+    "label": "Outer-only PPO",
+    "task": "Template-Yaw-Bot-Outer-Only-PPO-Direct-v0",
+    "seeds": [17, 389, 2027]
+  },
+  "uniform": {
+    "label": "Uniform",
+    "task": "Template-Yaw-Bot-Uniform-Reward-PPO-Direct-v0",
+    "seeds": [17, 389, 2027],
+    "weights": [1.0, 1.0, 1.0, 1.0, 1.0]
+  },
+  "static": {
+    "label": "Static",
+    "task": "Template-Yaw-Bot-Static-Reward-PPO-Direct-v0",
+    "seeds": [17, 389, 2027],
+    "weights": [1.2, 0.8, 1.4, 0.7, 0.9]
+  },
+  "lirpg": {
+    "label": "PPO-LIRPG",
+    "task": "Template-Yaw-Bot-LIRPG-PPO-Direct-v0",
+    "seeds": [17, 389, 2027]
+  },
+  "relara": {
+    "label": "ReLara-PPO",
+    "task": "Template-Yaw-Bot-ReLara-PPO-Direct-v0",
+    "seeds": [73, 941, 5827]
+  },
+  "selection": {
+    "metric": "fixed_task_reward",
+    "trailing_window": 100,
+    "checkpoint_interval": 50
+  },
+  "evaluation": {
+    "num_envs": 128,
+    "steps": 7200,
+    "seeds": [211, 3301, 7907],
+    "action_saturation_threshold": 0.98
+  },
+  "yaw_method": {
+    "atomic_rewards": 22,
+    "groups": ["stability", "contact_slip", "linear", "yaw", "regularization"],
+    "composer_hidden_dims": [128, 64],
+    "composer_weight_bounds": [0.6, 1.4],
+    "composer_weight_mean": 1.0,
+    "composer_learning_rate": 0.0003,
+    "outer_critic_learning_rate": 0.001,
+    "outer_critic_epochs": 3,
+    "group_rms_decay": 0.999,
+    "weight_to_one_regularizer": 0.001,
+    "temporal_smoothness_regularizer": 0.01,
+    "deployment_warmup_fraction": 0.2
+  }
+}

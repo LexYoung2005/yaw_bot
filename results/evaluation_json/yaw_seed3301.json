@@ -1,0 +1,21 @@
+{
+  "task": "Template-Yaw-Bot-Predictive-Gated-Direct-v0",
+  "checkpoint": "ANONYMIZED_SELECTED_CHECKPOINT/model_1400.pt",
+  "checkpoint_iteration": 1400,
+  "evaluation_seed": 3301,
+  "num_envs": 128,
+  "steps": 7200,
+  "completed_episodes": 293,
+  "mean_episode_length": 2872.7576791808874,
+  "metrics": {
+    "Diagnostics/forward_cmd_success_rate": 0.1368517018502785,
+    "Diagnostics/lin_cmd_success_rate": 0.06098682137736533,
+    "Diagnostics/planar_position_error": 4.418429465046696,
+    "Diagnostics/stop_cmd_success_rate": 0.8553500897447682,
+    "Diagnostics/yaw_cmd_signed_success_rate": 0.342166284247198,
+    "Evaluation/action_saturation_rate": 0.004352394496074542,
+    "Evaluation/command_success": 0.172158203125,
+    "Evaluation/fixed_outer_reward": 1.5698366087343958,
+    "Evaluation/termination_rate": 0.00013237847222222223
+  }
+}

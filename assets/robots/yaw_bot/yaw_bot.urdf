@@ -168,12 +168,12 @@
         <limit lower="-0.174533" upper="1.396263" effort="100" velocity="20" />
     </joint>
 
-    <joint name="L_leg1_r_4" type="revolute">
+    <joint name="L_leg1_r_4" type="continuous">
         <origin xyz="-0.06 0 0.00361001" rpy="-3.141592653589793 -1.5707963267948966 0" />
         <parent link="L_leg1" />
         <child link="L_leg2" />
         <axis xyz="-1 0 0" />
-        <limit lower="0.174533" upper="1.48353" effort="100" velocity="20" />
+        <limit effort="100" velocity="20" />
     </joint>
 
     <joint name="L_leg2_r_7" type="continuous">
@@ -192,12 +192,12 @@
         <limit lower="-0.174533" upper="1.396263" effort="100" velocity="20" />
     </joint>
 
-    <joint name="R_leg1_r_9" type="revolute">
+    <joint name="R_leg1_r_9" type="continuous">
         <origin xyz="-0.06 0 -0.00361" rpy="-3.141592653589793 -1.5707963267948966 0" />
         <parent link="R_leg1" />
         <child link="R_leg2" />
         <axis xyz="1 0 0" />
-        <limit lower="-1.48353" upper="-0.174533" effort="100" velocity="20" />
+        <limit effort="100" velocity="20" />
     </joint>
 
     <joint name="R_leg2_r_10" type="continuous">
